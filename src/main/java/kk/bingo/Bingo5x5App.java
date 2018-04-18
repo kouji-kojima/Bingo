@@ -1,9 +1,12 @@
 package kk.bingo;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.sql.DriverManager;
@@ -15,14 +18,6 @@ public class Bingo5x5App {
 
 	/** 何枚ビンゴを作成するか？ How many Bingo ? */
 	private static int BINGO_NUM = 36;
-
-	/** ＤＢ情報 */
-	private static String DB_INFO = "jdbc:oracle:thin:@IP:PORT:ORCL";
-	private static String DB_USER = "user";
-	private static String DB_PASS = "pass";
-
-	/** ビンゴの中に埋める文字を格納しているテーブル。IDには1～シーケンスに登録しておく。 */
-	private static String BINGO_TARGET_SQL = "SELECT id, target_name FROM BINGO_TARGET_TBL";
 
 	/** ビンゴ出力先 */
 	private static String BINGO_OUTPUT_PATH = "C:\\temp\\bingo.tsv";
@@ -40,7 +35,7 @@ public class Bingo5x5App {
 	}
 
 	private static ArrayList<BingoTarget> pick(int choice) {
-		var allBingoTargets = getAllBingoTargets();
+		var allBingoTargets = getAllFromCsvBingoTargets();
 		var choiceBingoTargets = new ArrayList<BingoTarget>(choice);
 		var combination = new ArrayList<>(choice);
 		Random rnd = new Random();
@@ -61,7 +56,33 @@ public class Bingo5x5App {
 		return choiceBingoTargets;
 	}
 
-	private static ArrayList<BingoTarget> getAllBingoTargets() {
+	private static ArrayList<BingoTarget> getAllFromCsvBingoTargets() {
+		var allBingoTargets = new ArrayList<BingoTarget>();
+		File bingoTargets = new File("bingo_target.txt");
+		try (
+				var reader = new BufferedReader(new InputStreamReader(new FileInputStream(bingoTargets), "windows-31j"));) {
+			String line;
+			while ((line = reader.readLine()) != null) {
+				String[] data = line.split(",", 0); // 行をカンマ区切りで配列に変換
+				if (!"".equals(data[0])) {
+					allBingoTargets.add(new BingoTarget(Integer.parseInt(data[0]), data[1]));
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return allBingoTargets;
+	}
+
+	/** ＤＢ情報 */
+	private static String DB_INFO = "jdbc:oracle:thin:@IP:PORT:ORCL";
+	private static String DB_USER = "user";
+	private static String DB_PASS = "pass";
+
+	/** ビンゴの中に埋める文字を格納しているテーブル。IDには1～シーケンスに登録しておく。 */
+	private static String BINGO_TARGET_SQL = "SELECT id, target_name FROM BINGO_TARGET_TBL";
+
+	private static ArrayList<BingoTarget> getAllFromDbBingoTargets() {
 		var allBingoTargets = new ArrayList<BingoTarget>();
 		try {
 			try (

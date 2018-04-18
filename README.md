@@ -7,20 +7,19 @@
 1.Bingo5x5Appを修正してください。
 
 ```
-	/** 何枚ビンゴを作成するか？ How many Bingo ? */
-	private static int BINGO_NUM = 36;
+/** 何枚ビンゴを作成するか？ How many Bingo ? */
+private static int BINGO_NUM = 36;
 
-	/** ＤＢ情報 */
-	private static String DB_INFO = "jdbc:oracle:thin:@IP:PORT:ORCL"; // 今回はオラクルのサンプルです。
-	private static String DB_USER = "user";
-	private static String DB_PASS = "pass";
+/** ＤＢ情報 */
+private static String DB_INFO = "jdbc:oracle:thin:@IP:PORT:ORCL"; // 今回はオラクルのサンプルです。
+private static String DB_USER = "user";
+private static String DB_PASS = "pass";
 
-	/** ビンゴの中に埋める文字を格納しているテーブル。IDには1～シーケンスに登録しておく。 */
-	private static String BINGO_TARGET_SQL = "SELECT id, target_name FROM BINGO_TARGET_TBL";
+/** ビンゴの中に埋める文字を格納しているテーブル。IDには1～シーケンスに登録しておく。 */
+private static String BINGO_TARGET_SQL = "SELECT id, target_name FROM BINGO_TARGET_TBL";
 
-	/** ビンゴ出力先 */
-	private static String BINGO_OUTPUT_PATH = "C:\\temp\\bingo.csv";
-
+/** ビンゴ出力先 */
+private static String BINGO_OUTPUT_PATH = "C:\\temp\\bingo.csv";
 ```
 
 2.BINGO\_TARGET\_TBLテーブルを作成してください。

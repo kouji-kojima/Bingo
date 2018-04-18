@@ -1,4 +1,4 @@
-# 5x5 の BINGO を 作成するアプリ
+# 5x5 の BINGO を 作成するアプリ(Java 10 を 使っています。)
 
 
 実行前準備
@@ -45,3 +45,10 @@ ID には、1から順番にシーケンシャルにデータを入れてくだ�
 |50    |gojyuro     |
 
 
+実行
+----
+
+```
+mvn package
+java -jar bingo-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+```

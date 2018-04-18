@@ -25,7 +25,7 @@ public class Bingo5x5App {
 	private static String BINGO_TARGET_SQL = "SELECT id, target_name FROM BINGO_TARGET_TBL";
 
 	/** ビンゴ出力先 */
-	private static String BINGO_OUTPUT_PATH = "C:\\temp\\bingo.csv";
+	private static String BINGO_OUTPUT_PATH = "C:\\temp\\bingo.tsv";
 
 	public static void main(String[] args) throws Exception {
 		var bingoList = new ArrayList<ArrayList<BingoTarget>>();

@@ -4,7 +4,7 @@
 事前準備
 --------
 
-[bingo_target.txt](https://github.com/kouji-kojima/Bingo/blob/master/bingo_target.txt) を 作成し、jarと同じディレクトリに置いてください。
+[bingo_target.txt](https://github.com/kouji-kojima/Bingo/blob/master/bingo_target.txt) を 作成し、bingo.jarと同じディレクトリに置いてください。
 
 ID には、1から順番にシーケンシャルにデータを入れてください。
 

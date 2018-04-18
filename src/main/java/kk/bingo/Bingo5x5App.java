@@ -8,9 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.PrintStream;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -70,7 +68,7 @@ public class Bingo5x5App {
 		var allBingoTargets = new ArrayList<BingoTarget>();
 		File bingoTargets = new File("bingo_target.txt");
 		try (
-				var reader = new BufferedReader(new InputStreamReader(new FileInputStream(bingoTargets), "MS932"));) {
+				var reader = new BufferedReader(new InputStreamReader(new FileInputStream(bingoTargets), "UTF-8"));) {
 			String line;
 			while ((line = reader.readLine()) != null) {
 				String[] data = line.split(",", 0); // 行をカンマ区切りで配列に変換
@@ -85,37 +83,32 @@ public class Bingo5x5App {
 	}
 
 	private static void printBingo(ArrayList<ArrayList<BingoTarget>> bingoTargetsList) {
-		try {
-			var out = new PrintStream(System.out, true, "MS932");
-			for (var bingoTargets : bingoTargetsList) {
-				for (int i = 0; i < 5; i++) {
-					out.print(bingoTargets.get(i).targetName + "\t");
-				}
-				System.out.println();
-				for (int i = 5; i < 10; i++) {
-					out.print(bingoTargets.get(i).targetName + "\t");
-				}
-				out.println();
-				for (int i = 10; i < 12; i++) {
-					out.print(bingoTargets.get(i).targetName + "\t");
-				}
-				out.print("　\t");
-				for (int i = 12; i < 14; i++) {
-					out.print(bingoTargets.get(i).targetName + "\t");
-				}
-				out.println();
-				for (int i = 14; i < 19; i++) {
-					out.print(bingoTargets.get(i).targetName + "\t");
-				}
-				out.println();
-				for (int i = 19; i < 24; i++) {
-					out.print(bingoTargets.get(i).targetName + "\t");
-				}
-				out.println();
-				out.println();
+		for (var bingoTargets : bingoTargetsList) {
+			for (int i = 0; i < 5; i++) {
+				System.out.print(bingoTargets.get(i).targetName + "\t");
 			}
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+			System.out.println();
+			for (int i = 5; i < 10; i++) {
+				System.out.print(bingoTargets.get(i).targetName + "\t");
+			}
+			System.out.println();
+			for (int i = 10; i < 12; i++) {
+				System.out.print(bingoTargets.get(i).targetName + "\t");
+			}
+			System.out.print("　\t");
+			for (int i = 12; i < 14; i++) {
+				System.out.print(bingoTargets.get(i).targetName + "\t");
+			}
+			System.out.println();
+			for (int i = 14; i < 19; i++) {
+				System.out.print(bingoTargets.get(i).targetName + "\t");
+			}
+			System.out.println();
+			for (int i = 19; i < 24; i++) {
+				System.out.print(bingoTargets.get(i).targetName + "\t");
+			}
+			System.out.println();
+			System.out.println();
 		}
 	}
 

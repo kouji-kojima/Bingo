@@ -9,7 +9,7 @@
 	<properties>
 		<resource.encoding>UTF-8</resource.encoding>
 		<java.source.encoding>UTF-8</java.source.encoding>
-		<output.encoding>MS932</output.encoding>
+		<output.encoding>UTF-8</output.encoding>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>10</java.version>
 		<maven.compiler.target>${java.version}</maven.compiler.target>

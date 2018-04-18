@@ -1,4 +1,4 @@
-# 5x5 の BINGO を 作成するアプリ(Java 10 を 使っています。)
+# 5x5 の BINGO を 作成するアプリ
 
 
 事前準備
@@ -28,3 +28,5 @@ mvn package
 cp bingo_target.txt target/
 java -jar target/bingo-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 ```
+
+※Java 10 を 使っています。

@@ -6,8 +6,43 @@
 	<name>bingo</name>
 	<url>http://maven.apache.org</url>
 
+	<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>kk.bingo.Bingo5x5App</mainClass>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib</classpathPrefix>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
 	<properties>
+		<resource.encoding>UTF-8</resource.encoding>
+		<java.source.encoding>UTF-8</java.source.encoding>
+		<output.encoding>UTF-8</output.encoding>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>10</java.version>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
 	</properties>
 
 	<dependencies>
@@ -23,4 +58,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
 </project>

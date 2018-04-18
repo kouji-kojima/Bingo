@@ -9,8 +9,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -144,28 +142,28 @@ public class Bingo5x5App {
 		}
 	}
 
-	/** ＤＢ情報 */
-	private static String DB_INFO = "jdbc:oracle:thin:@IP:PORT:ORCL";
-	private static String DB_USER = "user";
-	private static String DB_PASS = "pass";
-
-	/** ビンゴの中に埋める文字を格納しているテーブル。IDには1～シーケンスに登録しておく。 */
-	private static String BINGO_TARGET_SQL = "SELECT id, target_name FROM BINGO_TARGET_TBL";
-
-	private static ArrayList<BingoTarget> getAllFromDbBingoTargets() {
-		var allBingoTargets = new ArrayList<BingoTarget>();
-		try {
-			try (
-					var con = DriverManager.getConnection(DB_INFO, DB_USER, DB_PASS);
-					var ps = con.prepareStatement(BINGO_TARGET_SQL);
-					var result = ps.executeQuery();) {
-				while (result.next()) {
-					allBingoTargets.add(new BingoTarget(result.getInt("id"), result.getString("target_name")));
-				}
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return allBingoTargets;
-	}
+//	/** ＤＢ情報 */
+//	private static String DB_INFO = "jdbc:oracle:thin:@IP:PORT:ORCL";
+//	private static String DB_USER = "user";
+//	private static String DB_PASS = "pass";
+//
+//	/** ビンゴの中に埋める文字を格納しているテーブル。IDには1～シーケンスに登録しておく。 */
+//	private static String BINGO_TARGET_SQL = "SELECT id, target_name FROM BINGO_TARGET_TBL";
+//
+//	private static ArrayList<BingoTarget> getAllFromDbBingoTargets() {
+//		var allBingoTargets = new ArrayList<BingoTarget>();
+//		try {
+//			try (
+//					var con = DriverManager.getConnection(DB_INFO, DB_USER, DB_PASS);
+//					var ps = con.prepareStatement(BINGO_TARGET_SQL);
+//					var result = ps.executeQuery();) {
+//				while (result.next()) {
+//					allBingoTargets.add(new BingoTarget(result.getInt("id"), result.getString("target_name")));
+//				}
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		return allBingoTargets;
+//	}
 }

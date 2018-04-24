@@ -30,6 +30,6 @@ java -jar bingo.jar 100
 ビンゴシート作成
 ---------------
 
-bingo.jar で 作成された bingo.tsv の データを、bingo_sheet.xlsx の マスタシートに貼り付けて、シートを印刷してください。
+bingo.jar で 作成される bingo.tsv の データを [bingo_sheet.xlsx](https://github.com/kouji-kojima/Bingo/blob/master/bingo_sheet.xlsx) の マスタシートに貼り付け、印刷してください。
 
 ※Java 10 を 使っています。

@@ -59,6 +59,7 @@ public class Bingo5x5App {
 					break;
 				}
 			}
+			combination.add(randamId);
 		}
 
 		return choiceBingoTargets;
